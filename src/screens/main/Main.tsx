@@ -24,7 +24,7 @@ import {Settings} from '../settings/Settings';
 import {initReactI18next, useTranslation} from 'react-i18next';
 import {TransportDetailsScreen} from '../transport/TransportDetails';
 import {NavigationContainer} from '@react-navigation/native';
-import i18n from 'i18next';
+import i18n, {TFunction} from 'i18next';
 
 i18n.use(initReactI18next).init({
     resources: {
@@ -64,6 +64,10 @@ i18n.use(initReactI18next).init({
     },
 });
 
+// type for the translation function
+export type TranslateFunction = TFunction;
+
+
 const Stack = createNativeStackNavigator<Root>();
 
 
@@ -84,8 +88,7 @@ export const Main = () => {
                                       </React.Suspense>
                                   )}
                         //@ts-ignore
-                        //           options={{title: t('home')}
-                        //           }
+                                  options={{title: t('home')}}
                     />
                     <Stack.Screen name={'Details'} component={TransportDetailsScreen}/>
                 </Stack.Navigator>

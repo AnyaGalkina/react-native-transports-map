@@ -1,17 +1,23 @@
 import React, {useState} from 'react';
-import {View, FlatList, Button} from 'react-native';
-import {TextInput, DataTable} from 'react-native-paper';
+import {View, FlatList} from 'react-native';
+import {DataTable} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
-import {TransportDetailsScreen} from '../transport/TransportDetails';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {DetailsType, useAppNavigation} from '../main/types';
+import {Sort} from './sort/Sort';
 
+export type TransportsType = {
+    transport: string;
+    driver: string;
+    category: string;
+    latitude: number;
+    longitude: number;
+    phoneNumber: string;
+
+}
 
 let phoneNumberDefault = '+7 999 999 99 99';
 
-
-const Stack = createNativeStackNavigator();
-export const transports = [
+export const transports: TransportsType[] = [
     {
         transport: 'TC #1',
         driver: 'Driver 1',
@@ -43,25 +49,29 @@ export const TransportsList = () => {
     const {navigate} = useAppNavigation();
 
     const [data, setData] = useState(transports);
-    const [sortedData, setSortedData] = useState([]);
+    const [sortedData, setSortedData] = useState<TransportsType[]>([]);
     const {t} = useTranslation();
 
 
-    const handleSort = (): void => {
-        const sorted = [...data].sort((a, b) => a.category.localeCompare(b.category));
-        // @ts-ignore
-        setSortedData(sorted);
+    const onSortClick = (category: string): void => {
+        if (category === 'all') {
+            setSortedData([]);
+            return;
+        } else {
+            const filteredTransports = transports.filter((item) => item.category === category);
+            setSortedData(filteredTransports);
+        }
     };
 
     const handleDetails = ({category, driver, phoneNumber}: DetailsType): void => {
-        // console.log('handleDetails', category, driver, phoneNumber)
-        // navigate('Details', {url: item.url})
         navigate('Details', {category, driver, phoneNumber})
     }
 
     return (
         <View style={{flex: 1, padding: 16}}>
-            <Button title={t('submit')} onPress={handleSort}/>
+
+            <Sort onSortClick={onSortClick}/>
+
             <DataTable>
                 <DataTable.Header>
                     <DataTable.Title>{t('transport')}</DataTable.Title>
