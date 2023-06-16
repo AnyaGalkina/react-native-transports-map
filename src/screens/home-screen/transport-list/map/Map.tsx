@@ -1,8 +1,8 @@
 import React from 'react';
 import {View} from 'react-native';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
-import {TransportsType} from '../transport-list/TransportsList';
-import {Icon} from '../../../components/icon/Icon';
+import {TransportsType} from '../TransportsList';
+import {Icon} from '../../../../components/icon/Icon';
 
 type PropsType = {
     transports: TransportsType[];

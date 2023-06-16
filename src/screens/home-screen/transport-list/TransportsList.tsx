@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Sort} from './sort/Sort';
-import {Map} from '../map/Map';
+import {Map} from './map/Map';
 import {Table} from './table/Table';
 import {Icon} from '../../../components/icon/Icon';
 import transports from '../../../assets/data/transports.json';
-
 
 export type TransportsType = {
     transport: string;
