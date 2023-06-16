@@ -26,9 +26,14 @@ $ git clone git@github.com:AnyaGalkina/react-native-transports-map.git
 $ npm install
 ```
 
+```sh
+$ npm install --global expo-cli
+```
+
 ## Start
-Use `expo start` to start project.
-Scan the QR code above with Expo Go (Android) or the Camera app (iOS).
+- Use `expo start` to start project.
+- Download Expo Go app on your phone.
+- Scan the QR code above with Expo Go (Android) or the Camera app (iOS).
 
 ## Video
 
