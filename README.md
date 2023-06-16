@@ -33,7 +33,7 @@ Scan the QR code above with Expo Go (Android) or the Camera app (iOS).
 ## Video
 
 <p align="center">
-<img src="src/assets/video/video.gif"></p>
+<img src="src/assets/video/video.gif" width="40%"></p>
 
 ## Features
 - Filter cars by category
