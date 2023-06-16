@@ -1,18 +1,46 @@
-## Hotel App React Native
+## 🚚 Transport App React Native
 
-### About project
-Educational project Rect Native with navigation in Footer.
+## Table of Contents
 
-### Start the project
+- [About](#about)
+- [Install](#install)
+- [Start](#start)
+- [Video](#Video)
+- [Features](#Features)
+- [Contribute](#Contribute)
 
-To get a local copy up and running follow these simple example steps.
 
-Clone the repo.
-Use yarn install to install modules.
-Use yarn start to start project.
+## About
+
+React Native App that uses to find cars, filter it by category and get its currant location using [Google Maps](https://www.google.com/maps).
+
+## Install
+
+You can run a sample module using these steps:
+
+```sh
+$ git clone git@github.com:AnyaGalkina/react-native-transports-map.git
+```
+
+```sh
+$ npm install
+```
+
+## Start
+Use `expo start` to start project.
 Scan the QR code above with Expo Go (Android) or the Camera app (iOS).
 
-## Screenshots
-![Project screenshot](/src/assets/images/img1.jpg)
+## Video
 
-![Project screenshot](/src/assets/images/img2.PNG)
+<p align="center">
+<img src="src/assets/video/video.gif"></p>
+
+## Features
+- Filter cars by category
+- Get car location on Google Maps
+- Get driver's details, including name, phone number, ability to call and send message with WhatsApp
+- Switch languages: English, Russian
+
+## Contribute
+
+Contributions are welcome. Please open up an issue or create PR if you would like to help out.
