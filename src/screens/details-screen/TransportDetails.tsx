@@ -10,12 +10,20 @@ import {getTransportImage} from '../../utils/getTransportImage';
 export const TransportDetailsScreen = ({route}: DetailsScreenProps) => {
     const {t} = useTranslation();
     const {category, driver, phoneNumber, location} = route.params;
+
+    const defaultMessage: string = 'Добрый день, подскажите пожалуйста, какой номер заказа у вас сейчас в работе?'
     const handleCallPress = (): void => {
         Linking.openURL(`tel:${phoneNumber}`);
     };
 
     const handleWritePress = (): void => {
-        Linking.openURL(`whatsapp://send?phone=${phoneNumber}&text=Добрый день, подскажите пожалуйста, какой номер заказа у вас сейчас в работе?`);
+        Linking.openURL(`whatsapp://send?phone=${phoneNumber}&text=${defaultMessage}`)
+            .then(() => {
+                console.log('Whatsapp opened');
+            })
+            .catch(() => {
+                alert('Make sure Whatsapp installed on your device');
+            })
     };
 
     return (
@@ -37,9 +45,9 @@ export const TransportDetailsScreen = ({route}: DetailsScreenProps) => {
                     <Icon src={getTransportImage(category)!}/>
                 </Marker>
             </MapView>
-            <DetailsText title={"category"} text={category}/>
-            <DetailsText title={"driver"} text={driver}/>
-            <DetailsText title={"phone"} text={phoneNumber}/>
+            <DetailsText title={'category'} text={category}/>
+            <DetailsText title={'driver'} text={driver}/>
+            <DetailsText title={'phone'} text={phoneNumber}/>
 
             <Button title={t('call')} onPress={handleCallPress}/>
             <Button title={t('write')} onPress={handleWritePress}/>
