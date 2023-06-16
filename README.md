@@ -32,7 +32,8 @@ $ npm install --global expo-cli
 
 ## Start
 - Use `expo start` to start project.
-- Download Expo Go app on your phone.
+- Download [Expo Go](https://expo.dev/client?utm_source=google&utm_medium=cpc&utm_content=performancemax&gclid=CjwKCAjwkLCkBhA9EiwAka9QRjyanNCH2jrQm-nEqDBguCqGxe_qxxZjSO9ybkSiGAQghWiaI7Tq4RoCUE8QAvD_BwE) app on your phone.
+
 - Scan the QR code above with Expo Go (Android) or the Camera app (iOS).
 
 ## Video
