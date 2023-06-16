@@ -5,7 +5,7 @@
 - [About](#about)
 - [Install](#install)
 - [Start](#start)
-- [Video](#Video)
+- [Screen-Recording](#Screen-Recording)
 - [Features](#Features)
 - [Contribute](#Contribute)
 
@@ -36,10 +36,10 @@ $ npm install --global expo-cli
 
 - Scan the QR code above with Expo Go (Android) or the Camera app (iOS).
 
-## Video
+## Screen-Recording
 
 <p align="center">
-<img src="src/assets/video/video.gif" width="40%"></p>
+<img src="src/assets/video/screen-recording.gif" width="40%"></p>
 
 ## Features
 - Filter cars by category
