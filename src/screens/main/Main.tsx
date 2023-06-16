@@ -1,30 +1,12 @@
 import React from 'react';
-import {
-    Button,
-    Dimensions,
-    FlatList,
-    Image,
-    ListRenderItem,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View
-} from 'react-native';
-import {StatusBar} from 'expo-status-bar';
-import {Root, useAppNavigation} from './types';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Header} from '../header/Header';
-// import {TipsScreen} from '../tips/TipsScreen';
-// import {InboxScreen} from '../inbox/InboxScreen';
-// import {ProfileScreen} from '../profile/ProfileScreen';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {TransportsList} from '../transport-list/TransportsList';
-import {Map} from '../map/Map';
-import {Settings} from '../settings/Settings';
-import {initReactI18next, useTranslation} from 'react-i18next';
-import {TransportDetailsScreen} from '../transport/TransportDetails';
+import {initReactI18next} from 'react-i18next';
 import {NavigationContainer} from '@react-navigation/native';
-import i18n, {TFunction} from 'i18next';
+import i18n from 'i18next';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {Nav} from '../navigation/Nav';
+import {CustomStatusBar} from '../../components/costumStatusBar/CustomStatusBar';
+import {Header} from '../../components/header/Header';
+
 
 i18n.use(initReactI18next).init({
     resources: {
@@ -37,9 +19,14 @@ i18n.use(initReactI18next).init({
                 categoryB: 'Passenger',
                 categoryC: 'Special',
                 submit: 'Submit',
-                call: "Call",
-                write: "Write",
-                home: "Home",
+                call: 'Call',
+                write: 'Write',
+                home: 'Home',
+                settings: 'Settings',
+                sort: 'Filter by:',
+                all: 'All',
+                details: 'Details',
+                phone: "Phone",
             },
         },
         ru: {
@@ -51,9 +38,14 @@ i18n.use(initReactI18next).init({
                 categoryB: 'Пассажирский',
                 categoryC: 'Спецтранспорт',
                 submit: 'Применить',
-                call: "Позвонить",
-                write: "Написать",
-                home: "Главная",
+                call: 'Позвонить',
+                write: 'Написать',
+                home: 'Главная',
+                settings: 'Настройки',
+                sort: 'Фильтр',
+                all: 'Все',
+                details: 'Подробнее',
+                phone: "Телефон",
             },
         },
     },
@@ -64,92 +56,19 @@ i18n.use(initReactI18next).init({
     },
 });
 
-// type for the translation function
-export type TranslateFunction = TFunction;
-
-
-const Stack = createNativeStackNavigator<Root>();
-
-
 export const Main = () => {
-    const {t} = useTranslation();
 
     return (
-        <View style={styles.container}>
+        <SafeAreaProvider>
+            <CustomStatusBar backgroundColor="#2c435b"/>
+
             <Header/>
 
             <NavigationContainer>
-
-                <Stack.Navigator>
-                    <Stack.Screen name={'Home'}
-                                  component={() => (
-                                      <React.Suspense fallback={<LoadingIndicator/>}>
-                                          <TransportsList/>
-                                      </React.Suspense>
-                                  )}
-                        //@ts-ignore
-                                  options={{title: t('home')}}
-                    />
-                    <Stack.Screen name={'Details'} component={TransportDetailsScreen}/>
-                </Stack.Navigator>
+                <Nav/>
             </NavigationContainer>
-        </View>
 
+        </SafeAreaProvider>
     );
 };
 
-export type DataFilterType = {
-    id: number;
-    title: string;
-    imgSrc: string;
-}
-
-
-export const LoadingIndicator = () => {
-    return <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        {/*<ActivityIndicator size="large" color="#ff385c"/>*/}
-        loading...
-    </View>
-
-}
-
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        paddingHorizontal: 20,
-        marginTop: 65,
-    },
-    dataFilter: {
-        padding: 5,
-    },
-    imgSmall: {
-        backgroundColor: '#fff',
-        width: 40,
-        height: 40,
-    },
-    filterText: {
-        textAlign: 'center',
-    },
-    bold: {
-        fontWeight: '700',
-    },
-    date: {
-        fontWeight: '300',
-        fontStyle: 'italic',
-    },
-    item: {
-        marginVertical: 5,
-        display: 'flex',
-    },
-    // img: {
-    //     backgroundColor: '#7df5f5',
-    //     width: (WIDTH - 2 * PADDING),
-    //     height: (HEIGHT / 2.5),
-    // },
-    screenContainer: {
-        marginTop: 60,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-});

@@ -1,51 +1,25 @@
-import {NavigationProp, NavigatorScreenParams, useNavigation} from '@react-navigation/native';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 export type Root = {
     Home: undefined;
+    Transport: undefined;
     Details: DetailsType;
     Map: undefined;
-    // WishList: NavigatorScreenParams<NestedRootWishList>;
-    // Profile: NavigatorScreenParams<NestedRootProfile>;
+    Settings: undefined;
 }
 
 export type DetailsType = {
     category: string;
     driver: string;
     phoneNumber: string;
+    location: LocationType;
 }
 
-// export type NestedRootTips = {
-//     GetHelp: undefined
-// }
-//
-//
-// export type NestedRootInbox = {
-//     Messages: undefined
-//     Notifications: undefined
-//     Unread: undefined
-//     Read: undefined
-// }
-//
-// export type NestedRootProfile = {
-//     PersonalInfo: undefined
-//     Privacy: undefined
-//     Payments: undefined
-//     Hosting: undefined
-//     Support: undefined
-//     LogOut: undefined
-// }
-//
-// export type NestedRootWishList = {
-//     MainWishList: undefined
-//     Argentina: undefined
-//     USA: undefined
-//     Thai: undefined
-//     Australia: undefined
-//     NewZealand: undefined
-//     Greece: undefined
-// }
-
+type LocationType = {
+    latitude: number;
+    longitude: number;
+}
 
 export type DetailsScreenProps = NativeStackScreenProps<Root, 'Details'>
 
