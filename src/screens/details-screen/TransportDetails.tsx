@@ -5,6 +5,7 @@ import {DetailsScreenProps} from '../main/types';
 import {useTranslation} from 'react-i18next';
 import {DetailsText} from '../../components/details-text/DetailsText';
 import {Icon} from '../../components/icon/Icon';
+import {getTransportImage} from '../../utils/getTransportImage';
 
 export const TransportDetailsScreen = ({route}: DetailsScreenProps) => {
     const {t} = useTranslation();
@@ -16,12 +17,6 @@ export const TransportDetailsScreen = ({route}: DetailsScreenProps) => {
     const handleWritePress = (): void => {
         Linking.openURL(`whatsapp://send?phone=${phoneNumber}&text=Добрый день, подскажите пожалуйста, какой номер заказа у вас сейчас в работе?`);
     };
-
-    const getFinalImgSrc = (category: string) => {
-        if (category === 'categoryA') return require('../../assets/images/categoryA.png');
-        if (category === 'categoryB') return require('../../assets/images/categoryB.png');
-        if (category === 'categoryC') return require('../../assets/images/categoryC.png');
-    }
 
     return (
         <View>
@@ -39,7 +34,7 @@ export const TransportDetailsScreen = ({route}: DetailsScreenProps) => {
                     coordinate={location}
 
                 >
-                    <Icon src={getFinalImgSrc(category)}/>
+                    <Icon src={getTransportImage(category)!}/>
                 </Marker>
             </MapView>
             <DetailsText title={"category"} text={category}/>

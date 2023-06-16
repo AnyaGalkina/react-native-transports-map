@@ -3,6 +3,7 @@ import {View} from 'react-native';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import {TransportsType} from '../TransportsList';
 import {Icon} from '../../../../components/icon/Icon';
+import {getTransportImage} from '../../../../utils/getTransportImage';
 
 type PropsType = {
     transports: TransportsType[];
@@ -10,11 +11,6 @@ type PropsType = {
 
 export const Map = ({transports}: PropsType) => {
 
-    const getFinalImgSrc = (category: string) => {
-        if (category === 'categoryA') return require('../../../assets/images/categoryA.png');
-        if (category === 'categoryB') return require('../../../assets/images/categoryB.png');
-        if (category === 'categoryC') return require('../../../assets/images/categoryC.png');
-    }
     return (
         <View style={{flex: 1}}>
             <MapView
@@ -35,7 +31,7 @@ export const Map = ({transports}: PropsType) => {
                             longitude: item.longitude,
                         }}
                     >
-                        <Icon src={getFinalImgSrc(item.category)}/>
+                        <Icon src={getTransportImage(item.category)!}/>
                     </Marker>
                 ))}
             </MapView>
